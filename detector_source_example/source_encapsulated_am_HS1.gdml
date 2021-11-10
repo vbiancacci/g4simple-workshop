@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY define_source SYSTEM "define_source.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+
+ <define>
+	   <constant name="TWOPI" value="2.*pi"/>
+
+	   &define_source;
+
+	   <quantity name="source_z" type="length" value="source_height" unit="mm"/>
+     <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
+
+	   <quantity name="source_capsule_z" type="length" value="source_capsule_height" unit="mm"/>
+     <quantity name="source_capsule_radius" type="length" value="source_capsule_width/2" unit="mm"/>
+
+	   <quantity name="window" type="length" value="window_source" unit="mm" />
+	   <position name="pos_source_capsule" z="(source_capsule_z-source_z)/2-window"/>
+
+     <quantity name="collimator_z" type="length" value="collimator_height" unit="mm"/>
+     <quantity name="collimator_y" type="length" value="collimator_depth" unit="mm"/>
+     <quantity name="collimator_x" type="length" value="collimator_width" unit="mm"/>
+
+     <quantity name="collimator_beam_z" type="length" value="collimator_beam_height" unit="mm"/>
+     <quantity name="collimator_beam_radius" type="length" value="collimator_beam_width/2" unit="mm"/>
+
+     <position name="pos_collimator_beam" z="(collimator_z-collimator_beam_z)/2"/>
+     <position name="pos_source_collimator" z="(-source_capsule_z/ 2. - collimator_beam_z + collimator_z / 2.)"/>
+
+ </define>
+
+
+ <materials>
+         <element Z="8" formula="O" name="Oxygen" >
+                 <atom value="16" />
+         </element>
+         <element Z="14" formula="Si" name="Silicon" >
+                 <atom value="28.09" />
+         </element>
+         <element Z="24" formula="Cr" name="Chromium" >
+                 <atom value="51.9961" />
+         </element>
+         <element Z="25" formula="Mn" name="Manganese" >
+                 <atom value="54.93805" />
+         </element>
+         <element Z="26" formula="Fe" name="Iron" >
+                 <atom value="55.845" />
+         </element>
+         <element Z="28" formula="Ni" name="Nickel" >
+                 <atom value="58.9332" />
+         </element>
+
+         <material name="Ssteel" >
+                 <D value="7.9" unit="g/cm3" />
+                 <fraction n="0.01" ref="Silicon" />
+                 <fraction n="0.2" ref="Chromium" />
+                 <fraction n="0.02" ref="Manganese" />
+                 <fraction n="0.67" ref="Iron" />
+                 <fraction n="0.10" ref="Nickel" />
+         </material>
+
+         <material name="SiliconDioxide" >
+                 <D value="2.32" unit="g/cm3" />
+                 <composite n="1" ref="Silicon" />
+                 <composite n="2" ref="Oxygen" />
+         </material>
+ </materials>
+
+ <solids>
+        <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+	      <tube name="source_capsule" rmax="source_capsule_radius" z="source_capsule_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+        <box name="collimator" x="collimator_x" y="collimator_y" z="collimator_z"/>
+        <tube name="collimator_beam" rmax="collimator_beam_radius" z="collimator_beam_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+ </solids>
+
+
+ <structure>
+
+         <volume name="Source">
+             <materialref ref="SiliconDioxide"/>
+             <solidref ref="source"/>
+         </volume>
+
+	       <volume name="Source_Encapsulated">
+		         <materialref ref="Ssteel"/>
+		         <solidref ref="source_capsule"/>
+		         <physvol>
+			           <volumeref ref="Source"/>
+                 <positionref ref="pos_source_capsule"/>
+             </physvol>
+	       </volume>
+
+         <volume name="Collimator_Beam">
+                 <materialref ref="G4_AIR"/>
+                 <solidref ref="collimator_beam"/>
+         </volume>
+
+         <volume name="Source_Collimated">
+                 <materialref ref="G4_Cu"/>
+                 <solidref ref="collimator"/>
+                 <physvol>
+                     <volumeref ref="Collimator_Beam"/>
+                     <positionref ref="pos_collimator_beam"/>
+                 </physvol>
+		             <physvol>
+                     <volumeref ref="Source_Encapsulated"/>
+                     <positionref ref="pos_source_collimator"/>
+                 </physvol>
+         </volume>
+
+
+ </structure>
+
+
+ <setup name="Default" version="1.0">
+	 <world ref="Source_Collimated"/>
+ </setup>
+
+</gdml>

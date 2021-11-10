@@ -1,0 +1,14 @@
+  <constant name="source_height"   value="2.0" />
+  <constant name="source_width"   value="1.0" />
+
+  <constant name="source_capsule_height"   value="10.0" />
+  <constant name="source_capsule_width"   value="2.0" />
+
+  <constant name="window_source" value="0.2" />
+
+  <constant name="collimator_height"   value="65.0" />
+  <constant name="collimator_depth"   value="30.0" />
+  <constant name="collimator_width"   value="30.0" />
+
+  <constant name="collimator_beam_height"   value="25.6" />
+  <constant name="collimator_beam_width"   value="1.0" />

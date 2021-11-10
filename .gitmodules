@@ -1,4 +1,0 @@
-[submodule "legend-g4simple-simulation"]
-	path = legend-g4simple-simulation
-	url = git@github.com:legend-exp/legend-g4simple-simulation.git
-	branch = nersc

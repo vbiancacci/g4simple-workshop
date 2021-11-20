@@ -5,15 +5,15 @@
 
  <define>
 
-	  <quantity name="vol_x" type="length" value="10" unit="cm" />
-	  <quantity name="vol_y" type="length" value="10" unit="cm"/>
-	  <quantity name="vol_z" type="length" value="30" unit="cm"/>
+	  <quantity name="solid_x" type="length" value="10" unit="cm" />
+	  <quantity name="solid_y" type="length" value="10" unit="cm"/>
+	  <quantity name="solid_z" type="length" value="30" unit="cm"/>
 
-	  <quantity name="inn_vol_x" type="length" value="5" unit="cm"/>
-	  <quantity name="inn_vol_y" type="length" value="5" unit="cm"/>
-	  <quantity name="inn_vol_z" type="length" value="20" unit="cm"/>
+	  <quantity name="inn_solid_x" type="length" value="5" unit="cm"/>
+	  <quantity name="inn_solid_y" type="length" value="5" unit="cm"/>
+	  <quantity name="inn_solid_z" type="length" value="20" unit="cm"/>
 
-	  <position name="center" x="0" y="0" z="-vol_z/2" />
+	  <position name="pos_inner_solid" x="0" y="0" z="-vol_z/2" />
 
  </define>
 
@@ -31,12 +31,12 @@
 
  <solids>
 
-	  <box name="volume" x="vol_x" y="vol_y" z="vol_z"/>
-	  <box name="inner_volume" x="inn_vol_x" y="inn_vol_y" z="inn_vol_z"/>
+	  <box name="solid" x="solid_x" y="solid_y" z="solid_z"/>
+	  <box name="inner_solid" x="inn_solid_x" y="inn_solid_y" z="inn_solid_z"/>
 
-	  <subtraction name="final_volume" >
-		    <first ref="inner_volume"/> <second ref="volume"/>
-		    <positionref ref="pos_inner_vol_1" />
+	  <subtraction name="final_solid" >
+		    <first ref="inner_solid"/> <second ref="solid"/>
+		    <positionref ref="pos_inner_solid" />
 	  </subtraction>
 
  </solids>
@@ -45,7 +45,7 @@
  <structure>
 	  <volume name="physical_volume">
 		    <materialref ref="Al"/>
-		    <solidref ref="final_volume"/>
+		    <solidref ref="final_solid"/>
 	  </volume>
  </structure>
 

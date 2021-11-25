@@ -7,7 +7,7 @@
 <define>
 
 	<constant name="TWOPI" value="2.*pi"/>
-
+	 
 	<quantity name="detector_height" type="lenght" value="59.3" unit="mm" />
 	<quantity name="detector_radius" type="length" value="41.0" unit="mm"/>
 
@@ -18,38 +18,40 @@
 	<quantity name="groove_inner_radius" type="length" value="10.1" unit="mm"/>
 	<quantity name="groove_outer_radius" type="length" value="13.9" unit="mm"/>
 
+
+
   </define>
 
 
 <materials>
 
-   <isotope name="Ge70" Z="32" N="70">
-       <atom type="A" value="69.9243" />
-   </isotope>
-   <isotope name="Ge72" Z="32" N="72">
-       <atom type="A" value="71.9221" />
-   </isotope>
-   <isotope name="Ge73" Z="32" N="73">
-       <atom type="A" value="72.9235" />
-   </isotope>
-   <isotope name="Ge74" Z="32" N="74">
-       <atom type="A" value="73.9212" />
-   </isotope>
-   <isotope name="Ge76" Z="32" N="76">
-       <atom type="A" value="75.9214" />
-	 </isotope>
-	 <element name="enr_ge" formula="Ge" >
-		   <fraction n="0.0000397" ref="Ge70" />
-		   <fraction n="0.0000893" ref="Ge72" />
-       <fraction n="0.000278" ref="Ge73" />
-       <fraction n="0.1258" ref="Ge74" />
-       <fraction n="0.8738" ref="Ge76" />
+         <isotope name="Ge70" Z="32" N="70">
+                 <atom type="A" value="69.9243" />
+         </isotope>
+         <isotope name="Ge72" Z="32" N="72">
+                 <atom type="A" value="71.9221" />
+         </isotope>
+         <isotope name="Ge73" Z="32" N="73">
+                 <atom type="A" value="72.9235" />
+         </isotope>
+         <isotope name="Ge74" Z="32" N="74">
+                 <atom type="A" value="73.9212" />
+         </isotope>
+         <isotope name="Ge76" Z="32" N="76">
+                 <atom type="A" value="75.9214" />
+	 </isotope> 
+	 <element name="enr_ge" formula="Ge" > 
+		 <fraction n="0.0000397" ref="Ge70" />  
+		 <fraction n="0.0000893" ref="Ge72" />
+                 <fraction n="0.000278" ref="Ge73" />
+                 <fraction n="0.1258" ref="Ge74" />
+                 <fraction n="0.8738" ref="Ge76" /> 
 	 </element>
-   <material name="enriched_germanium" formula="Ge" >
-       <D value="5.545" unit="g/cm3" />
-       <fraction n="1.0" ref="enr_ge" />
+         <material name="enriched_germanium" formula="Ge" >
+                 <D value="5.545" unit="g/cm3" />
+                 <fraction n="1.0" ref="enr_ge" />
 	 </material>
-
+	
  </materials>
 
 
@@ -57,16 +59,15 @@
 
 	<genericPolycone name = "detector" startphi="1" deltaphi="TWOPI" aunit="rad">
 		 <rzpoint r="well_radius" z="0" />
-    <!-- fill the lines below  - do we have time for that?-->
-		 <!--<rzpoint r="detector_radius" z="0" />
-		 <rzpoint r="detector_radius" z="detector_height" />
+		 <rzpoint r="detector_radius" z="0" />  
+		 <rzpoint r="detector_radius" z="detector_height" /> 
 		 <rzpoint r="groove_outer_radius" z="detector_height" />
 		 <rzpoint r="groove_outer_radius" z="groove_height" />
 		 <rzpoint r="groove_inner_radius" z="groove_height" />
 		 <rzpoint r="groove_inner_radius" z="detector_height" />
 		 <rzpoint r="0" z="detector_height" />
 		 <rzpoint r="0" z="well_height" />
-		 <rzpoint r="well_radius" z="well_height" /> -->
+		 <rzpoint r="well_radius" z="well_height" />
 	</genericPolycone>
 
  </solids>
@@ -85,3 +86,4 @@
  </setup>
 
 </gdml>
+

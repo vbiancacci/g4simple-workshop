@@ -7,7 +7,6 @@
 /analysis/setFileName vis.root
 
 /g4simple/setVolID Detector_PV 1
-/g4simple/recordAllSteps false
 /run/initialize
 
 /vis/open HepRepXML
@@ -18,14 +17,14 @@
 /vis/scene/add/volume world
 /vis/scene/add/trajectories smooth
 /vis/scene/add/hits
-/vis/geometry/set/colour Detector 0 0.00 0.00 0.00 1
+/vis/geometry/set/colour Detector 0 1.00 0.00 0.00 1
 /g4simple/listPhysVols
 
 /gps/particle geantino
 /gps/energy 100 MeV
 
 /gps/direction 0 0 1
-/gps/pos/centre 43. 0. -200 mm
+/gps/pos/centre 20. 0. -200 mm
 /gps/pos/confine Source_PV
 
 /vis/scene/endOfEventAction accumulate 1

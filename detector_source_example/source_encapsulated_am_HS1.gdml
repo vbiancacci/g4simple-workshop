@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE gdml [
-<!ENTITY define_source SYSTEM "define_source.xml">
+<!ENTITY define_source SYSTEM "define_source_am_HS1_top.xml">
 ]>
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
@@ -11,23 +11,23 @@
 	   &define_source;
 
 	   <quantity name="source_z" type="length" value="source_height" unit="mm"/>
-     <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
+           <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
 
 	   <quantity name="source_capsule_z" type="length" value="source_capsule_height" unit="mm"/>
-     <quantity name="source_capsule_radius" type="length" value="source_capsule_width/2" unit="mm"/>
+           <quantity name="source_capsule_radius" type="length" value="source_capsule_width/2" unit="mm"/>
 
 	   <quantity name="window" type="length" value="window_source" unit="mm" />
 	   <position name="pos_source_capsule" z="(source_capsule_z-source_z)/2-window"/>
 
-     <quantity name="collimator_z" type="length" value="collimator_height" unit="mm"/>
-     <quantity name="collimator_y" type="length" value="collimator_depth" unit="mm"/>
-     <quantity name="collimator_x" type="length" value="collimator_width" unit="mm"/>
+           <quantity name="collimator_z" type="length" value="collimator_height" unit="mm"/>
+     	   <quantity name="collimator_y" type="length" value="collimator_depth" unit="mm"/>
+     	   <quantity name="collimator_x" type="length" value="collimator_width" unit="mm"/>
 
-     <quantity name="collimator_beam_z" type="length" value="collimator_beam_height" unit="mm"/>
-     <quantity name="collimator_beam_radius" type="length" value="collimator_beam_width/2" unit="mm"/>
+     	   <quantity name="collimator_beam_z" type="length" value="collimator_beam_height" unit="mm"/>
+      	   <quantity name="collimator_beam_radius" type="length" value="collimator_beam_width/2" unit="mm"/>
 
-     <position name="pos_collimator_beam" z="(collimator_z-collimator_beam_z)/2"/>
-     <position name="pos_source_collimator" z="(-source_capsule_z/ 2. - collimator_beam_z + collimator_z / 2.)"/>
+     	   <position name="pos_collimator_beam" z="(collimator_z-collimator_beam_z)/2"/>
+     	   <position name="pos_source_collimator" z="(-source_capsule_z/ 2. - collimator_beam_z + collimator_z / 2.)"/>
 
  </define>
 
@@ -70,7 +70,7 @@
 
  <solids>
         <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
-	      <tube name="source_capsule" rmax="source_capsule_radius" z="source_capsule_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+	<tube name="source_capsule" rmax="source_capsule_radius" z="source_capsule_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
         <box name="collimator" x="collimator_x" y="collimator_y" z="collimator_z"/>
         <tube name="collimator_beam" rmax="collimator_beam_radius" z="collimator_beam_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
  </solids>
@@ -83,14 +83,14 @@
              <solidref ref="source"/>
          </volume>
 
-	       <volume name="Source_Encapsulated">
-		         <materialref ref="Ssteel"/>
-		         <solidref ref="source_capsule"/>
-		         <physvol>
-			           <volumeref ref="Source"/>
-                 <positionref ref="pos_source_capsule"/>
-             </physvol>
-	       </volume>
+	 <volume name="Source_Encapsulated">
+	 	<materialref ref="Ssteel"/>
+		<solidref ref="source_capsule"/>
+		<physvol>
+			<volumeref ref="Source"/>
+                	<positionref ref="pos_source_capsule"/>
+                 </physvol>
+	 </volume>
 
          <volume name="Collimator_Beam">
                  <materialref ref="G4_AIR"/>
@@ -101,12 +101,12 @@
                  <materialref ref="G4_Cu"/>
                  <solidref ref="collimator"/>
                  <physvol>
-                     <volumeref ref="Collimator_Beam"/>
-                     <positionref ref="pos_collimator_beam"/>
+                 	<volumeref ref="Collimator_Beam"/>
+                 	<positionref ref="pos_collimator_beam"/>
                  </physvol>
-		             <physvol>
-                     <volumeref ref="Source_Encapsulated"/>
-                     <positionref ref="pos_source_collimator"/>
+                 <physvol>
+                 	<volumeref ref="Source_Encapsulated"/>
+                 	<positionref ref="pos_source_collimator"/>
                  </physvol>
          </volume>
 

@@ -1,0 +1,74 @@
+/run/verbose 1
+#/event/verbose 1
+#/tracking verbose 1
+/random/setSeeds 1 1
+#/g4simple/setRAndomSeed true
+/g4simple/setReferencePhysList LBE
+
+/g4simple/setDetectorGDML main_am_HS1_top.gdml
+/g4simple/setOutputFormat hdf5
+#/g4simple/setOutputFormat root
+/analysis/setFileName sim-V02160B-am_HS1-top-20r-45z.hdf5
+
+/g4simple/setVolID Detector_PV 1
+#/g4simple/recordAllSteps true
+/run/initialize
+/g4simple/listPhysVols
+#/material/nist/listMaterials
+
+#/gps/particle ion
+#/gps/ion 95 241 0 0
+#/gps/energy 0 MeV
+#/grdm/nucleusLimits 241 241 95 95
+#/gps/ang/type iso
+#/gps/ang/mintheta 150 deg
+#/gps/ang/maxtheta 180 deg
+#/gps/pos/type Volume
+#/gps/pos/shape Cylinder
+#/gps/pos/radius 0.5
+#/gps/pos/halfz 1.0
+#/gps/pos/centre 20.0 0.0 -45.0 mm
+#/gps/pos/confine Source_PV
+
+/gps/source/add 0.000565145
+/gps/particle gamma
+/gps/ene/mono 98.97 keV
+/gps/ang/type iso
+/gps/ang/mintheta 150 deg
+/gps/ang/maxtheta 180 deg
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/radius 0.5
+/gps/pos/halfz 1.0
+/gps/pos/centre 20.0 0.0 -45. mm
+/gps/pos/confine Source_PV
+ 
+/gps/source/add 0.000542873
+/gps/particle gamma
+/gps/ene/mono 102.98 keV
+/gps/ang/type iso
+/gps/ang/mintheta 150 deg
+/gps/ang/maxtheta 180 deg
+/gps/pos/type Volume
+/gps/pos/shape Cylinder
+/gps/pos/radius 0.5
+/gps/pos/halfz 1.0
+/gps/pos/centre 20.0 0.0 -45. mm
+/gps/pos/confine Source_PV
+
+
+
+#/gps/source/intensity 1
+#/gps/particle gamma
+#/gps/ene/mono 59.5409 keV
+#/gps/ang/type iso
+#/gps/ang/mintheta 150 deg
+#/gps/ang/maxtheta 180 deg
+#/gps/pos/type Volume
+#/gps/pos/shape Cylinder
+#/gps/pos/radius  0.5
+#/gps/pos/halfz  1.0
+#/gps/pos/centre 20.0 0.0 -45. mm
+#/gps/pos/confine Source_PV
+
+/run/beamOn 10000

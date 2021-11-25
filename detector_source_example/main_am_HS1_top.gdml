@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<!DOCTYPE gdml [
-]>
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
  <define>
 
-    <position name="pos_collimator" x="43.0" y="0"  z="-15.0" unit="mm"/>
-	  <position name="pos_detector" z="0" unit="mm" />
+    	 <position name="pos_collimator" x="20.0" y="0"  z="-45.0" unit="mm"/>
+	 <position name="pos_detector" z="0" unit="mm" />
 
  </define>
 
@@ -16,23 +14,23 @@
 
 	 <box name="worldBox" lunit="m" x="10.0" y="10.0" z="10.0"/>
 
-</solids>
+ </solids>
 
 
  <structure>
 
 	     <volume name="World">
-            <materialref ref="G4_AIR"/>
-            <solidref ref="worldBox"/>
-		        <physvol>
-                <file name="detector.gdml"/>
-                <positionref ref="pos_detector"/>
-		        </physvol>
-		        <physvol>
-                <file name="source_encapsulated_am_HS1.gdml"/>
-                <positionref ref="pos_collimator"/>
-            </physvol>
-		   </volume>
+                 <materialref ref="G4_AIR"/>
+                 <solidref ref="worldBox"/>
+		 <physvol>
+                      <file name="detector_V02160B.gdml"/>
+                      <positionref ref="pos_detector"/>
+		  </physvol>
+		  <physvol>
+                      <file name="source_encapsulated_am_HS1.gdml"/>
+                      <positionref ref="pos_collimator"/>
+                  </physvol>
+             </volume>
 
  </structure>
 

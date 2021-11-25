@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<!DOCTYPE gdml [
-]>
-<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
  <define>
 
@@ -13,7 +12,7 @@
 	  <quantity name="inn_solid_y" type="length" value="5" unit="cm"/>
 	  <quantity name="inn_solid_z" type="length" value="20" unit="cm"/>
 
-	  <position name="pos_inner_solid" x="0" y="0" z="-vol_z/2" />
+	  <position name="pos_inner_solid" x="0" y="0" z="-solid_z/2" />
 
  </define>
 
@@ -35,7 +34,7 @@
 	  <box name="inner_solid" x="inn_solid_x" y="inn_solid_y" z="inn_solid_z"/>
 
 	  <subtraction name="final_solid" >
-		    <first ref="inner_solid"/> <second ref="solid"/>
+		    <first ref="solid"/> <second ref="inner_solid"/>
 		    <positionref ref="pos_inner_solid" />
 	  </subtraction>
 

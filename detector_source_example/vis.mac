@@ -11,12 +11,13 @@
 
 /vis/open HepRepXML
 /vis/scene/create vis
-/vis/viewer/set/autoRefresh false
 /vis/sceneHandler/attach
 /vis/viewer/set/style surface
+/vis/viewer/set/autoRefresh false
 /vis/scene/add/volume world
 /vis/scene/add/trajectories smooth
 /vis/scene/add/hits
+/vis/scene/add/axes 0 0 0 1
 /vis/geometry/set/colour Detector 0 1.00 0.00 0.00 1
 /g4simple/listPhysVols
 
@@ -24,7 +25,7 @@
 /gps/energy 100 MeV
 
 /gps/direction 0 0 1
-/gps/pos/centre 20. 0. -200 mm
+/gps/pos/centre 20. 0. -40. mm
 /gps/pos/confine Source_PV
 
 /vis/scene/endOfEventAction accumulate 1
